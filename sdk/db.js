@@ -30,6 +30,14 @@ const DBTools = {
             ajaxOS.createIndex(index, index);
           });
         }
+
+        if (!thisDB.objectStoreNames.contains('wv')) {
+          const wvOS = thisDB.createObjectStore('wv', { autoIncrement: true });
+          const indexList = ['LCP'];
+          indexList.forEach(index => {
+            wvOS.createIndex(index, index);
+          });
+        }
       };
 
       openRequest.onsuccess = event => {
